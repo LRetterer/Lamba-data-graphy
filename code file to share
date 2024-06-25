@@ -1,0 +1,22 @@
+#trying again below
+
+from astropy.io import fits
+import healpy as hp
+import matplotlib.pyplot as plt
+
+# Path to the downloaded Planck data file
+file_path = "~/Downloads/LFI_CorrMap_030-BPassCorr_1024_R3.00_full-ringhalf-1.fits"
+
+# Open the FITS file
+hdul = fits.open(file_path)
+
+# Extract the data
+data = hdul[1].data
+
+# Plot the map
+# Assuming the data is stored in a similar format (replace 'Q_POLARISATION' with the appropriate field name)
+hp.mollview(data['Q_STOKES'], title='Planck 30 GHz Full-ring-half-1 Intensity Map', unit='K_CMB', min=-0.0020, max=0.00068)
+plt.show()
+
+# Close the FITS file
+hdul.close()
